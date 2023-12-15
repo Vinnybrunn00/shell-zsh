@@ -14,6 +14,7 @@ WORDCHARS=${WORDCHARS//\/}
 
 # hide EOL sign ('%')
 export PROMPT_EOL_MARK=""
+export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 # configure key keybindings
 bindkey -e                                        
@@ -58,7 +59,7 @@ esac
 force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null;then 
 	color_prompt=yes
     else
 	color_prompt=
@@ -66,14 +67,14 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PROMPT=$'%F{%(#.blue.green)} %B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}\n%B%(#.%F{red}#.%F{blue} › )%b%F{reset}'
+    PROMPT=$'%F{%(#.blue.green)} %B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}\n%B%(#.%F{red}#.%F{blue} ➜ )%b%F{reset}'
     RPROMPT=$'%(?.. %? %F{red}%B⨯%b%F{reset})%(1j. %j %F{yellow}%B⚙%b%F{reset}.)'
 
     # enable syntax-highlighting
-    if [ -f /home/placeDirectoryorUserNameHere/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && [ "$color_prompt" = yes ]; then
+    if [ -f /home/vinny/.plugins/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && [ "$color_prompt" = yes ]; then
 
 	unsetopt ksharrays
-	. /home/placeDirectoryorUserNameHere/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	. /home/vinny/.plugins/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 	ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 	ZSH_HIGHLIGHT_STYLES[default]=none
 	ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red,bold
@@ -119,7 +120,7 @@ if [ "$color_prompt" = yes ]; then
 
     fi
 else
-    PROMPT='${debian_chroot:+($debian_chroot)}%n@%m:%~%# '
+    PROMPT='${debian_chroot:+($debian_chroot)}%n@%m:%~%#'
 fi
 unset color_prompt force_color_prompt
 
@@ -179,4 +180,5 @@ alias l='ls -CF'
 if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     . /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'
+	
 fi
