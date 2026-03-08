@@ -1,6 +1,8 @@
 # ~/.zshrc file for zsh non-login shells.
 # see /usr/share/doc/zsh/examples/zshrc for examples
 
+# zsh-syntax-highlighting
+
 setopt autocd              
 setopt interactivecomments 
 setopt ksharrays           
